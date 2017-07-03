@@ -27,10 +27,9 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -144,11 +143,11 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         progress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcProgress, DEFAULT_PROGRESS);
         secondaryProgress = typedArray.getFloat(R.styleable.RoundCornerProgress_rcSecondaryProgress, DEFAULT_SECONDARY_PROGRESS);
 
-        int colorBackgroundDefault = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
+        int colorBackgroundDefault = ContextCompat.getColor(context, R.color.round_corner_progress_bar_background_default);
         colorBackground = typedArray.getColor(R.styleable.RoundCornerProgress_rcBackgroundColor, colorBackgroundDefault);
-        int colorProgressDefault = context.getResources().getColor(R.color.round_corner_progress_bar_progress_default);
+        int colorProgressDefault = ContextCompat.getColor(context, R.color.round_corner_progress_bar_progress_default);
         colorProgress = typedArray.getColor(R.styleable.RoundCornerProgress_rcProgressColor, colorProgressDefault);
-        int colorSecondaryProgressDefault = context.getResources().getColor(R.color.round_corner_progress_bar_secondary_progress_default);
+        int colorSecondaryProgressDefault = ContextCompat.getColor(context, R.color.round_corner_progress_bar_secondary_progress_default);
         colorSecondaryProgress = typedArray.getColor(R.styleable.RoundCornerProgress_rcSecondaryProgressColor, colorSecondaryProgressDefault);
         typedArray.recycle();
 

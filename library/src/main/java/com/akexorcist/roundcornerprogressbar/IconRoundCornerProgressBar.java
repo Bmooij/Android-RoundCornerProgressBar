@@ -24,6 +24,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,7 +87,7 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         iconPaddingTop = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingTop, dp2px(DEFAULT_ICON_PADDING_TOP));
         iconPaddingBottom = (int) typedArray.getDimension(R.styleable.IconRoundCornerProgress_rcIconPaddingBottom, dp2px(DEFAULT_ICON_PADDING_BOTTOM));
 
-        int colorIconBackgroundDefault = context.getResources().getColor(R.color.round_corner_progress_bar_background_default);
+        int colorIconBackgroundDefault = ContextCompat.getColor(context, R.color.round_corner_progress_bar_background_default);
         colorIconBackground = typedArray.getColor(R.styleable.IconRoundCornerProgress_rcIconBackgroundColor, colorIconBackgroundDefault);
 
         typedArray.recycle();
@@ -148,9 +149,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
     private void drawImageIconSize() {
         if (iconSize == -1)
-            ivProgressIcon.setLayoutParams(new LayoutParams(iconWidth, iconHeight));
+            ivProgressIcon.setLayoutParams(new LinearLayout.LayoutParams(iconWidth, iconHeight));
         else
-            ivProgressIcon.setLayoutParams(new LayoutParams(iconSize, iconSize));
+            ivProgressIcon.setLayoutParams(new LinearLayout.LayoutParams(iconSize, iconSize));
     }
 
     private void drawImageIconPadding() {
@@ -294,7 +295,7 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         this.colorIconBackground = ss.colorIconBackground;
     }
 
-    private static class SavedState extends BaseSavedState {
+    private static class SavedState extends View.BaseSavedState {
         int iconResource;
         int iconSize;
         int iconWidth;
