@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 group='com.github.sergey-pokrovskyi'
 
-version = "2.0.3-v1"
+version = "2.0.3-v2"
 
 android {
     compileSdkVersion 25
@@ -13,7 +13,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "2.0.3-v1"
+        versionName "2.0.3-v2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 

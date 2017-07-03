@@ -91,6 +91,7 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             layoutProgress.setBackground(backgroundDrawable);
         } else {
+            //noinspection deprecation
             layoutProgress.setBackgroundDrawable(backgroundDrawable);
         }
 
@@ -265,10 +266,12 @@ public class TextRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
     @Override
     public void onGlobalLayout() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
             tvProgress.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-        else
+        } else{
+            //noinspection deprecation
             tvProgress.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        }
         drawTextProgressPosition();
     }
 
