@@ -1,3 +1,24 @@
+Libs updated, some deprecated methods updated, project structure changed
+
+minSdk - 15
+
+```groovy
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+```groovy
+dependencies {
+    compile 'com.github.sergey-pokrovskyi:Android-RoundCornerProgressBar:v2.0.3-v1'
+}
+```
+[v2.0.3-v1 Javadoc](https://jitpack.io/com/github/sergey-pokrovskyi/Android-RoundCornerProgressBar/v2.0.3-v1/javadoc/)
+
+**Original Description:**
+=
+
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Round%20Corner%20Progress%20Bar-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1375) [![Build Status](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar.svg?branch=master)](https://travis-ci.org/akexorcist/Android-RoundCornerProgressBar) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.akexorcist/RoundCornerProgressBar)
 
  
