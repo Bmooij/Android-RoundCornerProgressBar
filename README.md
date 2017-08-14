@@ -11,10 +11,10 @@ allprojects {
 ```
 ```groovy
 dependencies {
-    compile 'com.github.sergey-pokrovskyi:Android-RoundCornerProgressBar:v2.0.3-v2'
+    compile 'com.github.sergey-pokrovskyi:Android-RoundCornerProgressBar:v2.0.3-v3'
 }
 ```
-[v2.0.3-v2 Javadoc](https://jitpack.io/com/github/sergey-pokrovskyi/Android-RoundCornerProgressBar/v2.0.3-v2/javadoc/)
+[v2.0.3-v3 Javadoc](https://jitpack.io/com/github/sergey-pokrovskyi/Android-RoundCornerProgressBar/v2.0.3-v3/javadoc/)
 
 **Original Description:**
 =
