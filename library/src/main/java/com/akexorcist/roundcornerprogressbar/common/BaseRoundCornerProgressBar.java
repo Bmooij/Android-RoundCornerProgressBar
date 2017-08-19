@@ -318,6 +318,13 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public void setProgress(float progress) {
+        setProgress(progress, true);
+    }
+
+    private void setProgress(float progress, boolean cancelAnimation) {
+        if (cancelAnimation) {
+            cancelProgressAnimation();
+        }
         if (progress < 0)
             this.progress = 0;
         else if (progress > max)
@@ -344,7 +351,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             @Override
             public void onAnimationUpdate(final ValueAnimator valueAnimator) {
                 float value = (float) mProgressAnimator.getAnimatedValue();
-                setProgress(value);
+                setProgress(value, false);
             }
         });
 
@@ -364,6 +371,13 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     }
 
     public void setSecondaryProgress(float secondaryProgress) {
+        setSecondaryProgress(secondaryProgress, true);
+    }
+
+    private void setSecondaryProgress(float secondaryProgress, boolean cancelAnimation) {
+        if (cancelAnimation) {
+            cancelSecondaryProgressAnimation();
+        }
         if (secondaryProgress < 0)
             this.secondaryProgress = 0;
         else if (secondaryProgress > max)
@@ -390,7 +404,7 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             @Override
             public void onAnimationUpdate(final ValueAnimator valueAnimator) {
                 float value = (float) mSecondaryProgressAnimator.getAnimatedValue();
-                setSecondaryProgress(value);
+                setSecondaryProgress(value, false);
             }
         });
 
