@@ -20,6 +20,7 @@ package com.akexorcist.roundcornerprogressbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Parcel;
@@ -144,7 +145,9 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
     }
 
     private void drawImageIcon() {
-        ivProgressIcon.setImageResource(iconResource);
+        if(iconResource > Integer.MIN_VALUE) {
+            ivProgressIcon.setImageResource(iconResource);
+        }
     }
 
     private void drawImageIconSize() {
@@ -181,6 +184,12 @@ public class IconRoundCornerProgressBar extends BaseRoundCornerProgressBar imple
 
     public void setIconImageResource(int resId) {
         this.iconResource = resId;
+        drawImageIcon();
+    }
+
+    public void setIconImageDrawable(Drawable resId) {
+        ivProgressIcon.setImageDrawable(resId);
+        this.iconResource = Integer.MIN_VALUE;
         drawImageIcon();
     }
 
