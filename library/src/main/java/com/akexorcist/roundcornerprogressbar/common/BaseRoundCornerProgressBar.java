@@ -18,6 +18,7 @@ limitations under the License.
 
 package com.akexorcist.roundcornerprogressbar.common;
 
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -33,6 +34,7 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -66,6 +68,9 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
     private int colorSecondaryProgress;
 
     private boolean isReverse;
+
+    private ValueAnimator mProgressAnimator;
+    private ValueAnimator mSecondaryProgressAnimator;
 
     private OnProgressChangedListener progressChangedListener;
 
@@ -324,6 +329,30 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
             progressChangedListener.onProgressChanged(getId(), this.progress, true, false);
     }
 
+    private void cancelProgressAnimation(){
+        if (mProgressAnimator != null) {
+            mProgressAnimator.cancel();
+        }
+    }
+
+    public void setProgress(float progress, int duration) {
+        cancelProgressAnimation();
+
+        mProgressAnimator = ValueAnimator.ofFloat(getProgress(), progress);
+
+        mProgressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(final ValueAnimator valueAnimator) {
+                float value = (float) mProgressAnimator.getAnimatedValue();
+                setProgress(value);
+            }
+        });
+
+        mProgressAnimator.setInterpolator(new LinearInterpolator());
+        mProgressAnimator.setDuration(duration);
+        mProgressAnimator.start();
+    }
+
     public float getSecondaryProgressWidth() {
         if (layoutSecondaryProgress != null)
             return layoutSecondaryProgress.getWidth();
@@ -344,6 +373,30 @@ public abstract class BaseRoundCornerProgressBar extends LinearLayout {
         drawSecondaryProgress();
         if(progressChangedListener != null)
             progressChangedListener.onProgressChanged(getId(), this.secondaryProgress, false, true);
+    }
+
+    private void cancelSecondaryProgressAnimation(){
+        if (mSecondaryProgressAnimator != null) {
+            mSecondaryProgressAnimator.cancel();
+        }
+    }
+
+    public void setSecondaryProgress(float secondaryProgress, int duration) {
+        cancelSecondaryProgressAnimation();
+
+        mSecondaryProgressAnimator = ValueAnimator.ofFloat(getProgress(), progress);
+
+        mSecondaryProgressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(final ValueAnimator valueAnimator) {
+                float value = (float) mSecondaryProgressAnimator.getAnimatedValue();
+                setSecondaryProgress(value);
+            }
+        });
+
+        mSecondaryProgressAnimator.setInterpolator(new LinearInterpolator());
+        mSecondaryProgressAnimator.setDuration(duration);
+        mSecondaryProgressAnimator.start();
     }
 
     public int getProgressBackgroundColor() {
